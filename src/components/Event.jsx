@@ -3,7 +3,7 @@ import { events } from "../utils";
 
 export const Event = () => {
   return (
-    <section className="scroll-mt-24 px-4" id="channel">
+    <section className="scroll-mt-24 px-4" id="event">
       <h1 className="pt-8 text-2xl font-bold text-slate-800 lg:text-3xl">
         Event Grup
       </h1>
