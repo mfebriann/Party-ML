@@ -10,12 +10,21 @@ const NotFoundPage = () => {
   );
 };
 
+const VerificationPage = () => {
+  const verificationContent = `google-site-verification: googlebc14674711e6e563.html`;
+  return <div dangerouslySetInnerHTML={{ __html: verificationContent }} />;
+};
+
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/event/:id" element={<ContentEvent />} />
+        <Route
+          path="/googlebc14674711e6e563.html"
+          element={<VerificationPage />}
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
