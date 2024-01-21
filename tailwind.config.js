@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        ml: "url('./src/assets/ml.jpg')",
+        ml: "url('./public/ml.jpg')",
       },
     },
   },
