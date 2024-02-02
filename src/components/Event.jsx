@@ -25,7 +25,7 @@ export const Event = () => {
                 {event.description}
               </p>
               <Link
-                to={`/event/${event.id}`}
+                to={`/event/${event.slug}`}
                 className="rounded-md bg-blue-500 px-4 py-2 text-white duration-150 hover:opacity-80"
               >
                 Selengkapnya

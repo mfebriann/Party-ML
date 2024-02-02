@@ -3,13 +3,13 @@ import { events } from "../utils";
 import { Fragment, useEffect, useState } from "react";
 
 const ContentEvent = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [contentEvent, setContentEvent] = useState({});
 
   useEffect(() => {
-    const content = events.find((event) => event.id == id);
+    const content = events.find((event) => event.slug == slug);
     setContentEvent(content);
-  }, [id]);
+  }, [slug]);
 
   const buttonActive =
     "bg-gradient-to-r from-sky-400 to-blue-500 text-white hover:opacity-90 ease-in duration-200 transition";
@@ -60,7 +60,7 @@ const ContentEvent = () => {
         </p>
         <a
           href={contentEvent.isExpired ? "#" : contentEvent.link}
-          className={`mb-12 mt-8 block rounded-xl p-3 text-center font-medium ${contentEvent.isExpired ? buttonDisable : buttonActive}`}
+          className={`mb-8 mt-8 block rounded-xl p-3 text-center font-medium ${contentEvent.isExpired ? buttonDisable : buttonActive}`}
         >
           Daftar Sekarang
         </a>

@@ -39,7 +39,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/event/:id" element={<ContentEvent />} />
+        <Route path="/event/:slug" element={<ContentEvent />} />
         <Route
           path="/googlebc14674711e6e563.html"
           element={<VerificationPage />}
