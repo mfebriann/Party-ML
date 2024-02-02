@@ -23,6 +23,11 @@ const ContentEvent = () => {
         </h1>
         <p className="mt-2 text-sm text-slate-400">
           {contentEvent.startdate} - {contentEvent.enddate}
+          {contentEvent.isExpired && (
+            <span className="ml-2 font-semibold text-red-600">
+              [Event Berakhir]
+            </span>
+          )}
         </p>
         <p className="mt-4 text-slate-700">
           {Object.keys(contentEvent).length > 0 &&
@@ -55,9 +60,11 @@ const ContentEvent = () => {
         </p>
         <a
           href={contentEvent.isExpired ? "#" : contentEvent.link}
+          target="_blank"
+          rel="noreferrer"
           className={`mb-12 mt-8 block rounded-xl p-3 text-center font-medium ${contentEvent.isExpired ? buttonDisable : buttonActive}`}
         >
-          Gabung Grup
+          Daftar Sekarang
         </a>
         <Link to={"/"} className="mx-auto block w-max text-blue-600 underline">
           Kembali
