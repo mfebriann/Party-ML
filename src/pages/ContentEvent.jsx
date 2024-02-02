@@ -16,7 +16,7 @@ const ContentEvent = () => {
   const buttonDisable = "pointer-events-none bg-slate-300 text-white/80";
 
   return (
-    <main className="container mx-auto h-screen bg-white p-5">
+    <main className="container mx-auto bg-white p-5">
       <article className="pb-5">
         <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">
           {contentEvent.title}
