@@ -60,8 +60,6 @@ const ContentEvent = () => {
         </p>
         <a
           href={contentEvent.isExpired ? "#" : contentEvent.link}
-          target="_blank"
-          rel="noreferrer"
           className={`mb-12 mt-8 block rounded-xl p-3 text-center font-medium ${contentEvent.isExpired ? buttonDisable : buttonActive}`}
         >
           Daftar Sekarang
