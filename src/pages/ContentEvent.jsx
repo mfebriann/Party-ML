@@ -20,24 +20,37 @@ const ContentEvent = () => {
 
   const sendData = (e) => {
     e.preventDefault();
-    setIsSendLoading(true);
-    const scriptURL =
-      "https://script.google.com/macros/s/AKfycbz1sqPMdeG6pWi-Q_BSNO7p8482WiPDEARy66tcQmi-3gWYVEmTLo1O4u17NhO2kMRtXw/exec";
 
-    fetch(scriptURL, {
-      method: "POST",
-      body: new FormData(e.target),
-    })
-      .then(() => {
-        alert("Terima kasih, username telegram kamu berhasil disimpan");
-        setIsSendLoading(false);
+    if (!contentEvent.isExpired) {
+      setIsSendLoading(true);
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbyAJ-phRj2snXBJS6gY6oDITfYlYLUq0ClgImUjPy60YsLIjjaP_ssuR51T3tvD7-4Xgw/exec";
+
+      fetch(scriptURL, {
+        method: "POST",
+        body: new FormData(e.target),
       })
-      .then(() => setUsername(""))
-      .catch((error) => {
-        alert(`Maaf, username telegram kamu gagal disimpan: ${error}`);
-        setUsername("");
-        setIsSendLoading(false);
-      });
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result);
+          if (result["result"] === "success") {
+            alert("Berhasil, username telegram kamu berhasil disimpan");
+            setUsername("");
+          } else if (
+            result["result"] === "error" &&
+            result["error"] === "Username already exists"
+          ) {
+            alert("Gagal, maaf username telegram kamu sudah terdaftar");
+          }
+
+          setIsSendLoading(false);
+        })
+        .catch((error) => {
+          alert(`Gagal, username telegram kamu gagal disimpan: ${error}`);
+          setUsername("");
+          setIsSendLoading(false);
+        });
+    }
   };
 
   const handleInputChange = (event) => {
