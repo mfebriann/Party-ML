@@ -3,7 +3,10 @@
 @tailwind utilities;
 
 @layer base {
-  html {
+  html,
+  input,
+  button,
+  ::placeholder {
     font-family: "Noto Sans", sans-serif;
   }
 }

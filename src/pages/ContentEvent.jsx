@@ -1,10 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 import { events } from "../utils";
 import { Fragment, useEffect, useState } from "react";
+import Input from "../components/Input";
 
 const ContentEvent = () => {
   const { slug } = useParams();
   const [contentEvent, setContentEvent] = useState({});
+  const [username, setUsername] = useState("");
+  const [isSendLoading, setIsSendLoading] = useState(false);
 
   useEffect(() => {
     const content = events.find((event) => event.slug == slug);
@@ -14,6 +17,32 @@ const ContentEvent = () => {
   const buttonActive =
     "bg-gradient-to-r from-sky-400 to-blue-500 text-white hover:opacity-90 ease-in duration-200 transition";
   const buttonDisable = "pointer-events-none bg-slate-300 text-white/80";
+
+  const sendData = (e) => {
+    e.preventDefault();
+    setIsSendLoading(true);
+    const scriptURL =
+      "https://script.google.com/macros/s/AKfycbz1sqPMdeG6pWi-Q_BSNO7p8482WiPDEARy66tcQmi-3gWYVEmTLo1O4u17NhO2kMRtXw/exec";
+
+    fetch(scriptURL, {
+      method: "POST",
+      body: new FormData(e.target),
+    })
+      .then(() => {
+        alert("Terima kasih, username telegram kamu berhasil disimpan");
+        setIsSendLoading(false);
+      })
+      .then(() => setUsername(""))
+      .catch((error) => {
+        alert(`Maaf, username telegram kamu gagal disimpan: ${error}`);
+        setUsername("");
+        setIsSendLoading(false);
+      });
+  };
+
+  const handleInputChange = (event) => {
+    setUsername(event.target.value);
+  };
 
   return (
     <main className="container mx-auto bg-white p-5">
@@ -58,12 +87,37 @@ const ContentEvent = () => {
               </Fragment>
             ))}
         </p>
-        <a
-          href={contentEvent.isExpired ? "#" : contentEvent.link}
-          className={`mb-8 mt-8 block rounded-xl p-3 text-center font-medium ${contentEvent.isExpired ? buttonDisable : buttonActive}`}
-        >
-          Daftar Sekarang
-        </a>
+        {contentEvent.isForm && (
+          <form className="mt-5" onSubmit={sendData}>
+            <Input htmlFor={"event"} isHidden value={contentEvent.title} />
+            <Input
+              label={"Masukkan username telegram kamu"}
+              isUsername
+              htmlFor={"username"}
+              value={username}
+              onChange={handleInputChange}
+            />
+            <button
+              type="submit"
+              className={`mb-8 mt-8 flex w-full items-center justify-center rounded-xl p-3 text-center font-medium ${contentEvent.isExpired ? buttonDisable : buttonActive}`}
+            >
+              {isSendLoading ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  fill="rgba(255,255,255,1)"
+                  className="animate-spin"
+                >
+                  <path d="M18.364 5.63604L16.9497 7.05025C15.683 5.7835 13.933 5 12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19C15.866 19 19 15.866 19 12H21C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C14.4853 3 16.7353 4.00736 18.364 5.63604Z"></path>
+                </svg>
+              ) : (
+                "Daftar Sekarang"
+              )}
+            </button>
+          </form>
+        )}
         <Link to={"/"} className="mx-auto block w-max text-blue-600 underline">
           Kembali
         </Link>

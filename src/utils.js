@@ -17,6 +17,6 @@ export const events = [
     startdate: "10 Februari 2024",
     enddate: "17 Februari 2024",
     isExpired: false,
-    link: "https://forms.gle/wLUvgeU7kt7qCfxv6",
+    isForm: true,
   },
 ];
