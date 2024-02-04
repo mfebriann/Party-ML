@@ -1,3 +1,5 @@
+import { Event1 } from "./assets";
+
 export const linkGroup = "https://t.me/+U19rPnrlGMBjZDJl";
 
 export const events = [
@@ -18,5 +20,6 @@ export const events = [
     enddate: "17 Februari 2024",
     isExpired: false,
     isForm: true,
+    thumbnail: Event1,
   },
 ];

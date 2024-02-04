@@ -61,18 +61,25 @@ const ContentEvent = () => {
   return (
     <>
       <main className="container mx-auto bg-white p-5">
+        <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">
+          {contentEvent.title}
+        </h1>
+        <p className="mt-2 text-sm text-slate-400">
+          {contentEvent.startdate} - {contentEvent.enddate}
+          {contentEvent.isExpired && (
+            <span className="ml-2 font-semibold text-red-600">
+              [Event Berakhir]
+            </span>
+          )}
+        </p>
+        {contentEvent.thumbnail && (
+          <img
+            src={contentEvent.thumbnail}
+            alt={contentEvent.title}
+            className="mt-2"
+          />
+        )}
         <article className="pb-5">
-          <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-            {contentEvent.title}
-          </h1>
-          <p className="mt-2 text-sm text-slate-400">
-            {contentEvent.startdate} - {contentEvent.enddate}
-            {contentEvent.isExpired && (
-              <span className="ml-2 font-semibold text-red-600">
-                [Event Berakhir]
-              </span>
-            )}
-          </p>
           <p className="mt-4 text-slate-700">
             {Object.keys(contentEvent).length > 0 &&
               contentEvent.description.split("\n").map((paragraph, index) => (
