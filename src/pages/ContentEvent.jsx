@@ -24,7 +24,7 @@ const ContentEvent = () => {
     if (!contentEvent.isExpired) {
       setIsSendLoading(true);
       const scriptURL =
-        "https://script.google.com/macros/s/AKfycbyAJ-phRj2snXBJS6gY6oDITfYlYLUq0ClgImUjPy60YsLIjjaP_ssuR51T3tvD7-4Xgw/exec";
+        "https://script.google.com/macros/s/AKfycbzGOekOpclC3pFPLhLT-ttj8gmc10rngCB7kwXtR6fcr1Fljas_rOCqA4t4VxFIi27L7A/exec";
 
       fetch(scriptURL, {
         method: "POST",
