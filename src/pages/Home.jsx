@@ -6,6 +6,7 @@ import {
   Channel,
   Admin,
   Event,
+  Footer,
 } from "../components";
 
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
         <Admin />
         <Event />
       </main>
+      <Footer />
     </>
   );
 };
