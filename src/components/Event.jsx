@@ -24,12 +24,19 @@ export const Event = () => {
               <p className="mb-6 mt-2 line-clamp-2 text-slate-600">
                 {event.description}
               </p>
-              <Link
-                to={`/event/${event.slug}`}
-                className="rounded-md bg-blue-500 px-4 py-2 text-white duration-150 hover:opacity-80"
-              >
-                Selengkapnya
-              </Link>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <Link
+                  to={`/event/${event.slug}`}
+                  className="rounded-md bg-blue-500 px-4 py-2 text-white duration-150 hover:opacity-80"
+                >
+                  Selengkapnya
+                </Link>
+                {event.isExpired && (
+                  <span className="ml-2 text-sm font-semibold text-red-600">
+                    Event Berakhir
+                  </span>
+                )}
+              </div>
             </div>
           );
         })}

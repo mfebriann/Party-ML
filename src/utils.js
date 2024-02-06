@@ -18,7 +18,7 @@ export const events = [
     Jika semua sudah terpenuhi maka kamu bisa chat admin di telegram yaitu [https://t.me/riann18] dan memberikan bukti screenshot nya + username telegram kamu. Dan kami akan menyimpan username telegram kamu untuk diundi nanti pada tanggal 17 Februari 2024`,
     startdate: "10 Februari 2024",
     enddate: "17 Februari 2024",
-    isExpired: false,
+    isExpired: true,
     isForm: true,
     thumbnail: Event1,
   },
